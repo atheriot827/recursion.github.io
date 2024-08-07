@@ -87,7 +87,10 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
+//2 * 4
+//2 + 2 + 2 + 2
 var multiply = function(x, y) {
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
