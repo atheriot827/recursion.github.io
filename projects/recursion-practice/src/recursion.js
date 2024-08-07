@@ -102,7 +102,22 @@ var sumBelow = function(n) {
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
+
 var range = function(x, y) {
+  if (x < y) {
+    //base
+    if(x + 1 >= y) {
+      return [];
+    }
+    //add curr x + 1 to array and call range
+    return [x + 1].concat(range(x + 1, y));
+  } else {
+    if (x - 1 <= y) {
+      return [];
+    }
+  //recursion - add current x to array and call range 
+    return [x - 1].concat(range(x - 1, y));
+  }
 };
 
 // 7. Compute the exponent of a number.
