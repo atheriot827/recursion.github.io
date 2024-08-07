@@ -43,17 +43,61 @@ var sum = function(array, i = 0) {
 
 // 3. Sum all numbers in an array containing nested arrays.
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
-var arraySum = function(array) {
+
+ var arraySum = function(array) {
+  //base - if array is empty, return 0
+  if(array.length === 0) {
+    return 0;
+  }
+
+  //recursion - use destructuring to get first and rest of the array
+  var [first, ...rest] = array;
+
+  //check if first ele is array
+  if(Array.isArray(first)) {
+    //use recursion to sum the nested array and add it to the sum of the rest
+    return arraySum(first) + arraySum(rest);
+  } else {
+    //add first ele to the sum of the rest
+    return first + arraySum(rest);
+  }
 };
 
 // 4. Check if a number is even.
+
 var isEven = function(n) {
+  //base if n is negative
+  if(n < 0) {
+    return isEven(-n);
+  }
+
+  //base
+  if(n === 0) {
+    return true;
+  }
+  if(n === 1) {
+    return false;
+  }
+  //recursion - decrement by 2 and check result
+  return isEven(n - 2);
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
+
 var sumBelow = function(n) {
+  //base - if n is 0 return 0
+  if(n === 0) {
+    return 0;
+  }
+
+  //recursion - if n is pos sum all ints below n, if n is neg, sum all ints above n
+  if(n > 0) {
+    return (n -1) + sumBelow(n -1);
+  } else {
+  return (n + 1) + sumBelow(n + 1);
+  }
 };
 
 // 6. Get the integers in range (x, y).
