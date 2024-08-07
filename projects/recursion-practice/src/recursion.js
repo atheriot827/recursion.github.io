@@ -176,7 +176,19 @@ var reverse = function(string) {
 };
 
 // 10. Write a function that determines if a string is a palindrome.
+//A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward
+
 var palindrome = function(string) {
+  //normalize input str
+  string = string.toLowerCase().replace(/[^a-z0-9]/gi, '');
+
+  //base
+  if(string.length <= 1) return true;
+  if (string[0] !== string[string.length - 1]) return false;
+
+  //recursion
+  return palindrome(string.slice(1, -1));
+  
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
