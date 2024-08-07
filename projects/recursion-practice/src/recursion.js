@@ -146,7 +146,22 @@ var exponent = function(base, exp) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
+
 var powerOfTwo = function(n) {
+  //base - if n is less than 1 its not a power of 2
+  if(n < 1) {
+    return false;
+  }
+  //base - if n is 1 its a power of 2
+  if (n === 1) {
+    return true;
+  }
+  //recursion - check if n is a power of 2
+  if(n % 2 !== 0) {
+    return false;
+  }
+  //divide n by 2 and check recursion
+  return powerOfTwo(n/2);
 };
 
 // 9. Write a function that accepts a string a reverses it.
