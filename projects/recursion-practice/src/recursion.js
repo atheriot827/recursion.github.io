@@ -196,7 +196,25 @@ var palindrome = function(string) {
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
+
 var modulo = function(x, y) {
+  //in case dividing by 0
+  if(y === 0) {
+    return NaN;
+  }
+  //base
+   if(x < 0) {
+    if(x + y >= 0) {
+      return x;
+    } else {
+      return modulo(x + y, y);
+    }
+   } else {
+    while (x >= y) {
+      x -= y;
+    }
+    return x;
+   }
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator  or
@@ -204,8 +222,15 @@ var modulo = function(x, y) {
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 //2 * 4
 //2 + 2 + 2 + 2
-var multiply = function(x, y) {
 
+var multiply = function(x, y) {
+  if(y === 0) {
+    return 0;
+  }
+  if(y > 0) {
+    return x + multiply(x, y - 1);
+  }
+  return -multiply(x, -y);
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
