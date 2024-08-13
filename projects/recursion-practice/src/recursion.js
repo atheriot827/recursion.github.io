@@ -293,7 +293,19 @@ var createArray = function(str){
 };
 
 // 17. Reverse the order of an array
+
 var reverseArr = function (array) {
+  //base - if arr is empty or has 1 ele
+  if(array.length <= 1) {
+    return array;
+  }
+  //recursion - reverse the rest of arr then add first ele to the end
+  let firstElement = array[0];
+  let restOfArray = array.slice(1);
+  let reversedRest = reverseArr(restOfArray);
+
+  //combine the reversed rest of arr with 1st ele
+  return reversedRest.concat(firstElement);
 };
 
 // 18. Create a new array with a given value and length.
