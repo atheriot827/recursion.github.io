@@ -311,7 +311,15 @@ var reverseArr = function (array) {
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
+
 var buildList = function(value, length) {
+  //base - if len is 0 return empty array
+  if(length === 0) {
+    return [];
+  }
+  let array = buildList(value, length - 1);
+  array.push(value);
+  return array;
 };
 
 // 19. Count the occurence of a value inside a list.
