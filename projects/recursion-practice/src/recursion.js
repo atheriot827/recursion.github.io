@@ -317,6 +317,7 @@ var buildList = function(value, length) {
   if(length === 0) {
     return [];
   }
+  //recursion - build arr by combining result of recursive call and the value
   let array = buildList(value, length - 1);
   array.push(value);
   return array;
@@ -325,7 +326,16 @@ var buildList = function(value, length) {
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
+
 var countOccurrence = function(array, value) {
+  //base - if array is empty return 0
+  if(array.length === 0) {
+    return 0;
+  }
+  //check if first ele matches value
+  let count = (array[0] === value) ? 1 : 0;
+  //recursion - add count of occ in the rest of array
+  return count + countOccurrence(array.slice(1), value);
 };
 
 // 20. Write a recursive version of map.
