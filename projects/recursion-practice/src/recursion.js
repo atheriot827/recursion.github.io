@@ -237,15 +237,13 @@ var multiply = function(x, y) {
 // JavaScript's Math object.
 
 var divide = function(x, y) {
-  //handle div by 0
+  //handle divide by 0
   if(y === 0) {
-    return undefined;
+    return undefined
   }
-  //base - if x < y, return 0 (no more div can be done)
   if(x < y) {
     return 0;
   }
-  //recursion - sub y from x and add 1 to the result
   return 1 + divide(x - y, y);
 };
 
@@ -256,12 +254,13 @@ var divide = function(x, y) {
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 
 var gcd = function(x, y) {
-  //base - if y is 0, x is gcd
+  //base - if y is 0, x is the GCD
   if (y === 0) {
     return x;
-  }
-  //recursion - call gcd with y and the remain of x / y
-  return gcd(y, x % y);
+}
+
+//recursion - call gcd with y and the remainder of x divided by y
+return gcd(y, x % y);
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
@@ -269,21 +268,28 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
-
 var compareStr = function(str1, str2) {
+
+  if (str1 === '' && str2 === '') {
+    return true;
+  }
+  if(str1[0] !== str2[0]) {
+    return false;
+  }
+  return compareStr(str1.slice(1), str2.slice(1));
 };
-
-
-
-
-
-
-
-
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
+
 var createArray = function(str){
+
+  //base - if str is empty return empty arr
+  if(str === '') {
+    return [];
+  }
+  //recursion - process the 1st char then call func on the rest of str
+  return [str[0]].concat(createArray(str.slice(1)));
 };
 
 // 17. Reverse the order of an array
