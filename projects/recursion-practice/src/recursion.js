@@ -432,7 +432,28 @@ var replaceKeysInObj = function(obj, keyToReplace, newKey) {
 // fibonacci(5);  // [0, 1, 1, 2, 3, 5]
 // Note:  The 0 is not counted.
 
+//Properties of the Fibonacci Sequence:
+
+// Starting Points: The sequence starts with 0 and 1.
+// Recursive Definition: Each number in the sequence (after the first two) is defined as the sum of the two preceding numbers.
+// Growth: The sequence grows exponentially as you move further along it.
+
+
 var fibonacci = function(n) {
+  //base - if n is 1, return the first Fib num
+  if(n === 1) {
+    return [0, 1];
+  }
+  //recursion - generate seq for n-1
+  const fibSequence = fibonacci(n - 1);
+
+  //calc the next fib num by summing the last 2 nums in the seq
+  const nextFibNumber = fibSequence[fibSequence.length - 1] + fibSequence[fibSequence.length - 2];
+
+  //append the next fib num to the seq
+  fibSequence.push(nextFibNumber);
+
+  return fibSequence;
 };
 
 // 25. Return the Fibonacci number located at index n of the Fibonacci sequence.
@@ -440,6 +461,13 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
+
+// Properties of the Fibonacci Sequence:
+
+// Starting Points: The sequence starts with 0 and 1.
+// Recursive Definition: Each number in the sequence (after the first two) is defined as the sum of the two preceding numbers.
+// Growth: The sequence grows exponentially as you move further along it.
+
 var nthFibo = function(n) {
 };
 
