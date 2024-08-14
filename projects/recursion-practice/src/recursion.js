@@ -550,7 +550,31 @@ var nestedEvenSum = function(obj) {
 
 // 29. Flatten an array containing nested arrays.
 // Example: flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
+
+// Why Flatten an Array?
+// Flattening is useful when you need to work with data in a simpler, more straightforward structure. For example, if you want to iterate over every element in the array or apply some function to each element, having a flat array makes this easier because you don't have to worry about nested arrays.
+
+// How to Flatten an Array:
+// Flattening can be done using different methods, including recursion, loops, or using built-in methods in some programming languages. The idea is always to break down the nested structure until you have a single, one-dimensional array.
+
 var flatten = function(arrays) {
+  //init empty arr to hold flat results
+  let flatArray = [];
+
+  //iterate over each ele in arr
+  for (let i = 0; i < arrays.length; i++) {
+    let value = arrays[i];
+
+    //check if curr ele is arr
+    if(Array.isArray(value)) {
+      //recursivly flatten it and concat result
+      flatArray = flatArray.concat(flatten(value));
+    } else {
+      //if not arr, add to the flatArray
+      flatArray.push(value);
+    }
+  }
+  return flatArray;
 };
 
 // 30. Given a string, return an object containing tallies of each letter.
