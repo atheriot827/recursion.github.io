@@ -469,6 +469,19 @@ var fibonacci = function(n) {
 // Growth: The sequence grows exponentially as you move further along it.
 
 var nthFibo = function(n) {
+  //return null for neg ints
+  if(n < 0) {
+    return null;
+  }
+  //base - return the fib num for i 0 or 1
+  if(n === 0) {
+    return 0;
+  }
+  if(n === 1) {
+    return 1;
+  }
+  //recursion - sum of the 2 prev fib nums
+  return nthFibo(n - 1) + nthFibo(n - 2);
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
