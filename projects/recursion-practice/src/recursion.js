@@ -661,8 +661,6 @@ var minimizeZeroes = function(array) {
 
 // The Math.abs function in JavaScript returns the absolute value of a number. The absolute value of a number is its non-negative value, regardless of its sign. Essentially, it removes any negative sign from the number.
 
-
-
 var alternateSign = function(array) {
   //base - if array is empty return empty arr
   if(array.length === 0) {
@@ -684,7 +682,37 @@ var alternateSign = function(array) {
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
+
+// In JavaScript, there isn't a built-in function that directly converts digits to their word equivalents. 
+
 var numToText = function(str) {
+
+  //define an obj with digit to word conversion
+  const digitToWord = {
+    '0': 'zero',
+    '1': 'one',
+    '2': 'two',
+    '3': 'three',
+    '4': 'four',
+    '5': 'five',
+    '6': 'six',
+    '7': 'seven',
+    '8': 'eight',
+    '9': 'nine'
+  };
+
+  //base - if str is empty, return empty str
+  if(str.length === 0) {
+    return '';
+  }
+  //check 1st char of str
+  const firstChar = str[0];
+
+  //recursion - convert dig to word if its a dig, otherwise keep char as is
+  const replacement = digitToWord[firstChar] !== undefined ? digitToWord[firstChar] : firstChar;
+
+  //concat the replacement with result of recursive call on rest of str
+  return replacement + numToText(str.slice(1));
 };
 
 // *** EXTRA CREDIT ***
