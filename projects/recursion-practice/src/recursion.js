@@ -383,7 +383,22 @@ var countKeysInObj = function(obj, key) {
 // var testobj = {'e': {'x':'y'}, 't':{'r': {'e':'r'}, 'p': {'y':'r'}},'y':'e'};
 // countValuesInObj(testobj, 'r') // 2
 // countValuesInObj(testobj, 'e') // 1
+
 var countValuesInObj = function(obj, value) {
+  //init count var to keep track of how many times val has been found
+  let count = 0;
+
+  //iterate through each prop of obj
+  for(let key in obj) {
+    if(typeof obj[key] === 'object') {
+      //if the prop is an obj call itself to search within nested obj
+      count += countValuesInObj(obj[key], value);
+      //if the prop value equals the the target value then increment count
+    } else if (obj[key] === value) {
+      count ++;
+    }
+  }
+  return count;
 };
 
 // 23. Find all keys in an object (and nested objects) by a provided name and rename
