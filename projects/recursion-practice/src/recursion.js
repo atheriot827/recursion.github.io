@@ -638,7 +638,20 @@ var augmentElements = function(array, aug) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
+
 var minimizeZeroes = function(array) {
+  //base - if arr empty return array
+  if(array.length === 0 || array.length === 1) {
+    return array;
+  }
+  //recursion - compare the 1st ele with 2nd
+  if(array[0] === 0 && array[1] === 0) {
+    //if both eles are 0s, skip 1st amd continue with rest of arr
+    return minimizeZeroes(array.slice(1));
+  } else {
+    //if they are diff, include 1st ele and continue with arr
+    return [array[0]].concat(minimizeZeroes(array.slice(1)));
+  }
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
