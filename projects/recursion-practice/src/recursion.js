@@ -658,7 +658,27 @@ var minimizeZeroes = function(array) {
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
+
+// The Math.abs function in JavaScript returns the absolute value of a number. The absolute value of a number is its non-negative value, regardless of its sign. Essentially, it removes any negative sign from the number.
+
+
+
 var alternateSign = function(array) {
+  //base - if array is empty return empty arr
+  if(array.length === 0) {
+    return [];
+  }
+  //determine correct sign for 1st ele
+  let firstElement = array[0];
+  if(array.length % 2 === 0) {
+    //if length of remaining arr is even, the 1st ele should be pos
+    firstElement = Math.abs(firstElement);
+  } else {
+    //if length of remaining arr is odd, the 1st ele should be neg
+    firstElement = -Math.abs(firstElement);
+  }
+  //recursion - combine the corr signed 1st ele with the result of alter rest
+  return [firstElement].concat(alternateSign(array.slice(1)));
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
